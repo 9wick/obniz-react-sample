@@ -15,7 +15,26 @@ module.exports = {
           presets: ['@babel/preset-react', '@babel/preset-env']
         }
       }]
-    }]
+    },
+      {
+        test: /\.(yml|yaml)$/,
+        use: [
+          {
+            loader: require.resolve('json-loader'),
+          },
+          {
+            loader: require.resolve('yaml-loader')
+            // loader: require.resolve(
+            //   '../dist/src/obniz/libs/webpackReplace/yaml-schema-loader'
+            // ),
+          },
+        ],
+      },
+      {
+        test: /\.(css)$/,
+        use: 'raw-loader',
+      },
+    ]
   },
   output: {
     path: __dirname + "/src/",
